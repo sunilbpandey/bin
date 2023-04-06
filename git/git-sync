@@ -1,0 +1,12 @@
+#!/bin/sh
+
+git_status=$(git status --porcelain)
+
+if [ ${#git_status} -gt 0 ]
+then
+    git add --all
+    git commit -m "$git_status"
+
+    git pull --rebase
+    git push
+fi
